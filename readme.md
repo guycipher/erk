@@ -35,3 +35,10 @@
      tree := erk.PrintTreeBytes(root, 0)
  }
  ```
+
+ ### example tree output
+ ```
+ 2e8acb4bccf85227
+     test_dir/f1.txt: 0a75a91375b27d44
+     test_dir/f2.txt: 19a1d238fce6124f
+ ```

@@ -53,6 +53,7 @@ func Test(t *testing.T) {
 
 	// Print the Merkle tree
 	tree := PrintTreeBytes(root, 0)
+
 	expectedTree := "2e8acb4bccf85227\n\ttest_dir/f1.txt: 0a75a91375b27d44\n\ttest_dir/f2.txt: 19a1d238fce6124f\n"
 
 	if !bytes.Equal(tree, []byte(expectedTree)) {
