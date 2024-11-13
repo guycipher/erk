@@ -1,7 +1,11 @@
  ## erk
-This package has the ability to hash a file or files inside a directory and return a merkle root or a detailed tree stating the files and their hashes.
+ erk provides functionality to compute the Merkle root and generate a detailed Merkle tree for files within a directory or a single file. It uses the xxHash algorithm(provided by github.com/cespare/xxhash/v2) for hashing file contents.
 
- ## still in development
+ ### features
+ - hash individual files or all files within a directory.
+ - construct a Merkle tree from the hashed file data.
+ - retrieve the Merkle root of the constructed tree.
+ - print the Merkle tree in a human-readable format.
 
  ## basic example
  ```go
