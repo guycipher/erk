@@ -7,7 +7,7 @@
  - retrieve the Merkle root of the constructed tree.
  - print the Merkle tree in a human-readable format.
 
- ## basic example
+ ### basic example
  ```go
  package main
 
