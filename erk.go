@@ -88,6 +88,7 @@ func New(input string, isDir bool) (*Erk, error) {
 	return e, nil
 }
 
+// readFilesInDirectory reads all files in a directory and returns a slice of FileData
 func readFilesInDirectory(dir string) ([]*FileData, error) {
 	var files []*FileData
 
@@ -173,4 +174,20 @@ func PrintTree(node *MNode, level int) {
 	}
 	PrintTree(node.left, level+1)
 	PrintTree(node.right, level+1)
+}
+
+// PrintTreeBytes prints the Merkle tree in a byte slice
+func PrintTreeBytes(node *MNode, level int) []byte {
+	if node == nil {
+		return nil
+	}
+	var result []byte
+	if node.path != "" {
+		result = append(result, fmt.Sprintf("%s%s: %x\n", string(' '+level*2), node.path, node.hash)...)
+	} else {
+		result = append(result, fmt.Sprintf("%s%x\n", string(' '+level*2), node.hash)...)
+	}
+	result = append(result, PrintTreeBytes(node.left, level+1)...)
+	result = append(result, PrintTreeBytes(node.right, level+1)...)
+	return result
 }
