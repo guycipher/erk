@@ -1,4 +1,4 @@
-module erk
+module github.com/guycipher/erk
 
 go 1.23.3
 

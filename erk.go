@@ -167,10 +167,14 @@ func PrintTree(node *MNode, level int) {
 	if node == nil {
 		return
 	}
+	indent := ""
+	for i := 0; i < level; i++ {
+		indent += "\t"
+	}
 	if node.path != "" {
-		fmt.Printf("%s%s: %x\n", string(' '+level*2), node.path, node.hash)
+		fmt.Printf("%s%s: %x\n", indent, node.path, node.hash)
 	} else {
-		fmt.Printf("%s%x\n", string(' '+level*2), node.hash)
+		fmt.Printf("%s%x\n", indent, node.hash)
 	}
 	PrintTree(node.left, level+1)
 	PrintTree(node.right, level+1)
@@ -181,11 +185,15 @@ func PrintTreeBytes(node *MNode, level int) []byte {
 	if node == nil {
 		return nil
 	}
+	indent := ""
+	for i := 0; i < level; i++ {
+		indent += "\t"
+	}
 	var result []byte
 	if node.path != "" {
-		result = append(result, fmt.Sprintf("%s%s: %x\n", string(' '+level*2), node.path, node.hash)...)
+		result = append(result, fmt.Sprintf("%s%s: %x\n", indent, node.path, node.hash)...)
 	} else {
-		result = append(result, fmt.Sprintf("%s%x\n", string(' '+level*2), node.hash)...)
+		result = append(result, fmt.Sprintf("%s%x\n", indent, node.hash)...)
 	}
 	result = append(result, PrintTreeBytes(node.left, level+1)...)
 	result = append(result, PrintTreeBytes(node.right, level+1)...)

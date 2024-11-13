@@ -28,6 +28,6 @@ This package has the ability to hash a file or files inside a directory and retu
      fmt.Printf("Merkle Root: %x\n", merkleRoot)
 
      // Print the Merkle tree
-     tree := erk.PrintTreeBytes(root)
+     tree := erk.PrintTreeBytes(root, 0)
  }
  ```
