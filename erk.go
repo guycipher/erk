@@ -29,14 +29,33 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package erk
 
+import (
+	"github.com/cespare/xxhash/v2"
+)
+
 // MNode represents a node in a Merkle tree
 type MNode struct {
-	Left  *MNode // Left child
-	Right *MNode // Right child
-	Hash  []byte // Hash of the node
-	Path  string // Path of the node (file path)
+	left  *MNode // Left child
+	right *MNode // Right child
+	hash  []byte // Hash of the node
+	path  string // Path of the node (file path)
+}
+
+// FileData represents the file path and its contents
+type FileData struct {
+	path    string // File path
+	content []byte // File content
 }
 
 // Erk represents the main Erk struct
 type Erk struct {
+	directory string // Directory to scan
+	file      string // File to scan (if directory is not provided)
+}
+
+// hashFileData hashes provided file data using xxhash
+func hashFileData(data []byte) []byte {
+	h := xxhash.New()
+	h.Write(data)
+	return h.Sum(nil)
 }
